@@ -56,6 +56,12 @@ const config: Config = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		}
+  	},
+  	colors: {
+  		'szabist-light-blue': '#A7C6ED', // Light Blue
+  		'szabist-dark-blue': '#003B5C', // Dark Blue
+  		'szabist-white': '#FFFFFF', // White
+
   	}
   },
   plugins: [require("tailwindcss-animate")],

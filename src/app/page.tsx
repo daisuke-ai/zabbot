@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Button } from "@/components/ui/button"
 import UniversityHomepage from './UniversityHomepage'
 import EducationalPortal from './EducationalPortal'
-import Logo from '../components/ui/logo'
 
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -14,7 +13,7 @@ export default function App() {
       <header className="bg-szabist-dark-blue text-szabist-white p-4 shadow-md">
         <div className="container mx-auto flex justify-between items-center">
           <div className="flex items-center space-x-4">
-            <Logo />
+           
             <h1 className="text-2xl font-bold">SZABIST University</h1>
           </div>
           {isLoggedIn ? (

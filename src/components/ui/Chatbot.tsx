@@ -10,7 +10,11 @@ interface ChatMessage {
   text: string
 }
 
-export default function Chatbot({ isLoggedIn = false }) {
+interface ChatbotProps {
+  isLoggedIn: boolean
+}
+
+export default function Chatbot({ isLoggedIn = false }: ChatbotProps) {
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([])
   const [inputMessage, setInputMessage] = useState('')
 
@@ -43,11 +47,11 @@ export default function Chatbot({ isLoggedIn = false }) {
   }
 
   return (
-    <div className="border rounded-md p-4 h-[400px] flex flex-col">
-      <h3 className="text-lg font-semibold mb-2">Chat with ZabBot</h3>
+    <div className="border border-szabist-light-blue rounded-md p-4 h-[400px] flex flex-col bg-szabist-white shadow-md">
+      <h3 className="text-lg font-semibold mb-2 text-szabist-dark-blue">Chat with ZabBot</h3>
       <ScrollArea className="flex-grow mb-4">
         {chatMessages.map((message, index) => (
-          <div key={index} className={`mb-2 ${message.sender === 'ZabBot' ? 'text-blue-600' : ''}`}>
+          <div key={index} className={`mb-2 ${message.sender === 'ZabBot' ? 'text-szabist-dark-blue' : 'text-gray-700'}`}>
             <strong>{message.sender}:</strong> {message.text}
           </div>
         ))}
@@ -57,10 +61,11 @@ export default function Chatbot({ isLoggedIn = false }) {
           type="text"
           placeholder="Ask ZabBot a question..."
           value={inputMessage}
-          onChange={(e) => setInputMessage(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInputMessage(e.target.value)}
+          onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => e.key === 'Enter' && handleSendMessage()}
+          className="border-szabist-light-blue focus:border-szabist-dark-blue"
         />
-        <Button onClick={handleSendMessage}>Send</Button>
+        <Button onClick={handleSendMessage} className="bg-szabist-dark-blue hover:bg-szabist-light-blue text-szabist-white">Send</Button>
       </div>
     </div>
   )
